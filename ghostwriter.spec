@@ -1,7 +1,7 @@
 Name: ghostwriter
 Version: 2.1.1
-Release: 1%{?dist}
-
+Release: 1
+Group: Office
 License: GPLv3+ and CC-BY and CC-BY-SA and MPLv1.1 and BSD and LGPLv3 and MIT and ISC
 Summary: Cross-platform, aesthetic, distraction-free Markdown editor
 URL: https://github.com/wereturtle/%{name}
@@ -21,11 +21,8 @@ BuildRequires: cmake(Qt5X11Extras)
 BuildRequires: cmake(Qt5Xml)
 BuildRequires: cmake(Qt5XmlPatterns)
 
-BuildRequires: desktop-file-utils
-BuildRequires: gcc-c++
 BuildRequires: hunspell-devel
-BuildRequires: libappstream-glib
-BuildRequires: make
+BuildRequires: pkgconfig(appstream-glib)
 
 Provides: bundled(cmark-gfm) = 0.29.0
 Provides: bundled(fontawesome-fonts) = 5.10.2
@@ -34,13 +31,10 @@ Provides: bundled(nodejs-react) = 17.0.1
 Provides: bundled(QtAwesome) = 5
 
 Requires: hicolor-icon-theme
+Requires: qt5-qtwebengine
 
 Recommends: cmark%{?_isa}
 Recommends: multimarkdown%{?_isa}
-Recommends: pandoc%{?_isa}
-
-# Required qt5-qtwebengine is not available on some arches.
-ExclusiveArch: %{qt5_qtwebengine_arches}
 
 %description
 Ghostwriter is a text editor for Markdown, which is a plain text markup
@@ -53,21 +47,14 @@ or your novel.
 
 %prep
 %autosetup -n %{name}-%{version} -p1
-mkdir -p %{_vpath_builddir}
 rm -rf 3rdparty/hunspell
 
 %build
-pushd %{_vpath_builddir}
-    %qmake_qt5 PREFIX=%{_prefix} ..
-popd
-%make_build -C %{_vpath_builddir}
-
-%check
-appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{name}.appdata.xml
-desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
+%qmake_qt5 PREFIX=%{_prefix} ..
+%make_build -C
 
 %install
-%make_install INSTALL_ROOT=%{buildroot} -C %{_vpath_builddir}
+%make_install INSTALL_ROOT=%{buildroot} -C
 %find_lang %{name} --with-qt
 
 %files -f %{name}.lang
