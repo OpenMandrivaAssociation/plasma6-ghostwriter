@@ -1,3 +1,5 @@
+%define _empty_manifest_terminate_build 0
+
 Name: ghostwriter
 Version: 2.1.1
 Release: 1
