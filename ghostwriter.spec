@@ -51,7 +51,9 @@ or your novel.
 rm -rf 3rdparty/hunspell
 
 %build
-%qmake_qt5 PREFIX=%{_prefix} ..
+%qmake_qt5 \
+            PREFIX=%{_prefix} \
+            %{name}.pro
 %make_build -C
 
 %install
