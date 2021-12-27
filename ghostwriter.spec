@@ -7,6 +7,7 @@ Summary: Cross-platform, aesthetic, distraction-free Markdown editor
 URL: https://github.com/wereturtle/%{name}
 Source0: %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
+BuildRequires: qmake5
 BuildRequires: cmake(Qt5Concurrent)
 BuildRequires: cmake(Qt5Core)
 BuildRequires: cmake(Qt5DBus)
