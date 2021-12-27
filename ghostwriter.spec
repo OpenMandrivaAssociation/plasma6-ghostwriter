@@ -54,10 +54,10 @@ rm -rf 3rdparty/hunspell
 %qmake_qt5 \
             PREFIX=%{_prefix} \
             %{name}.pro
-%make_build -C
+%make_build
 
 %install
-%make_install INSTALL_ROOT=%{buildroot} -C
+%make_install
 %find_lang %{name} --with-qt
 
 %files -f %{name}.lang
