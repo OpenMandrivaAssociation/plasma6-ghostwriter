@@ -57,7 +57,8 @@ rm -rf 3rdparty/hunspell
 %make_build
 
 %install
-%make_install
+mkdir -p %{buildroot}%{_bindir}
+%make_install INSTALL_ROOT=%{buildroot}
 %find_lang %{name} --with-qt
 
 %files -f %{name}.lang
