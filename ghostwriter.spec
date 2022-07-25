@@ -1,7 +1,7 @@
 %define _empty_manifest_terminate_build 0
 
 Name: ghostwriter
-Version: 2.1.1
+Version: 2.1.4
 Release: 1
 Group: Office
 License: GPLv3+ and CC-BY and CC-BY-SA and MPLv1.1 and BSD and LGPLv3 and MIT and ISC
