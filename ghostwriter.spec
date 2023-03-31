@@ -2,7 +2,7 @@
 
 Name: ghostwriter
 Version: 2.2.0
-Release: 1
+Release: 2
 Group: Office
 License: GPLv3+ and CC-BY and CC-BY-SA and MPLv1.1 and BSD and LGPLv3 and MIT and ISC
 Summary: Cross-platform, aesthetic, distraction-free Markdown editor
