@@ -1,13 +1,13 @@
 %define _empty_manifest_terminate_build 0
 
 Name: ghostwriter
-Version: 2.2.0
-Release: 2
+Version: 23.04.3
+Release: 1
 Group: Office
 License: GPLv3+ and CC-BY and CC-BY-SA and MPLv1.1 and BSD and LGPLv3 and MIT and ISC
 Summary: Cross-platform, aesthetic, distraction-free Markdown editor
 URL: https://github.com/wereturtle/%{name}
-Source0: %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+Source0: https://invent.kde.org/office/ghostwriter/-/archive/v%{version}/ghostwriter-v%{version}.tar.bz2
 
 BuildRequires: qmake5
 BuildRequires: cmake(Qt5Concurrent)
