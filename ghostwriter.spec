@@ -49,7 +49,7 @@ whether your masterpiece be that next blog post, your school paper,
 or your novel.
 
 %prep
-%autosetup -n %{name}-%{version} -p1
+%autosetup -n %{name}-v%{version} -p1
 rm -rf 3rdparty/hunspell
 
 %build
