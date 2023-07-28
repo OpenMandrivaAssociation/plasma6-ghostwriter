@@ -10,6 +10,7 @@ URL: https://github.com/wereturtle/%{name}
 Source0: https://invent.kde.org/office/ghostwriter/-/archive/v%{version}/ghostwriter-v%{version}.tar.bz2
 
 BuildRequires: qmake5
+BuildRequires: cmake
 BuildRequires: cmake(Qt5Concurrent)
 BuildRequires: cmake(Qt5Core)
 BuildRequires: cmake(Qt5DBus)
@@ -53,14 +54,11 @@ or your novel.
 rm -rf 3rdparty/hunspell
 
 %build
-%qmake_qt5 \
-            PREFIX=%{_prefix} \
-            %{name}.pro
+%cmake
 %make_build
 
 %install
-mkdir -p %{buildroot}%{_bindir}
-%make_install INSTALL_ROOT=%{buildroot}
+%make_install -C build
 %find_lang %{name} --with-qt
 
 %files -f %{name}.lang
