@@ -11,6 +11,7 @@ Source0: https://invent.kde.org/office/ghostwriter/-/archive/v%{version}/ghostwr
 
 BuildRequires: qmake5
 BuildRequires: cmake
+BuildRequires: cmake(ECM)
 BuildRequires: cmake(Qt5Concurrent)
 BuildRequires: cmake(Qt5Core)
 BuildRequires: cmake(Qt5DBus)
