@@ -1,14 +1,18 @@
-%define _empty_manifest_terminate_build 0
+%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
+#define git 20230824
 
 Name: ghostwriter
-Version: 2.2.0
-Release: 2
+Version: 23.08.0
+Release: %{?git:0.%{git}.}1
 Group: Office
 License: GPLv3+ and CC-BY and CC-BY-SA and MPLv1.1 and BSD and LGPLv3 and MIT and ISC
 Summary: Cross-platform, aesthetic, distraction-free Markdown editor
 URL: https://github.com/wereturtle/%{name}
-Source0: %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-
+%if 0%{?git:1}
+Source0: https://github.com/wereturtle/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
+%else
+Source0: http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%endif
 BuildRequires: qmake5
 BuildRequires: cmake(Qt5Concurrent)
 BuildRequires: cmake(Qt5Core)
@@ -49,26 +53,21 @@ whether your masterpiece be that next blog post, your school paper,
 or your novel.
 
 %prep
-%autosetup -n %{name}-%{version} -p1
+%autosetup -n %{name}-%{?git:master}%{!?git:%{version}} -p1
 rm -rf 3rdparty/hunspell
+%cmake_kde5 \
+	-G Ninja
 
 %build
-%qmake_qt5 \
-            PREFIX=%{_prefix} \
-            %{name}.pro
-%make_build
+%ninja_build -C build
 
 %install
-mkdir -p %{buildroot}%{_bindir}
-%make_install INSTALL_ROOT=%{buildroot}
-%find_lang %{name} --with-qt
+%ninja_install -C build
+%find_lang %{name} --with-qt --with-man
 
 %files -f %{name}.lang
-%doc CHANGELOG.md CONTRIBUTING.md CREDITS.md README.md
-%license COPYING
-%{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1*
-%dir %{_datadir}/ghostwriter
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.*
-%{_metainfodir}/%{name}.appdata.xml
+%{_bindir}/ghostwriter
+%{_datadir}/applications/org.kde.ghostwriter.desktop
+%{_datadir}/icons/hicolor/*/apps/ghostwriter.*
+%{_datadir}/metainfo/org.kde.ghostwriter.metainfo.xml
+%{_mandir}/man1/ghostwriter.1*
