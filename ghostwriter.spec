@@ -14,6 +14,8 @@ Source0: https://github.com/wereturtle/%{name}/archive/%{version}/%{name}-%{vers
 Source0: http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %endif
 BuildRequires: qmake5
+BuildRequires: cmake ninja
+BuildRequires: cmake(ECM)
 BuildRequires: cmake(Qt5Concurrent)
 BuildRequires: cmake(Qt5Core)
 BuildRequires: cmake(Qt5DBus)
