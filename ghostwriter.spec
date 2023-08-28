@@ -35,6 +35,7 @@ BuildRequires: cmake(KF5CoreAddons)
 BuildRequires: cmake(KF5XmlGui)
 BuildRequires: cmake(KF5ConfigWidgets)
 BuildRequires: cmake(KF5WidgetsAddons)
+BuildRequires: cmake(KF5DocTools)
 BuildRequires: hunspell-devel
 BuildRequires: pkgconfig(appstream-glib)
 
