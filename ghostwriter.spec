@@ -29,7 +29,11 @@ BuildRequires: cmake(Qt5WebEngineWidgets)
 BuildRequires: cmake(Qt5X11Extras)
 BuildRequires: cmake(Qt5Xml)
 BuildRequires: cmake(Qt5XmlPatterns)
-
+BuildRequires: cmake(KF5Sonnet)
+BuildRequires: cmake(KF5CoreAddons)
+BuildRequires: cmake(KF5XmlGui)
+BuildRequires: cmake(KF5ConfigWidgets)
+BuildRequires: cmake(KF5WidgetsAddons)
 BuildRequires: hunspell-devel
 BuildRequires: pkgconfig(appstream-glib)
 
