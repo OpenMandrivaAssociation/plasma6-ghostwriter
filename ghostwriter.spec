@@ -2,7 +2,7 @@
 #define git 20230824
 
 Name: ghostwriter
-Version: 23.08.2
+Version: 23.08.3
 Release: %{?git:0.%{git}.}1
 Group: Office
 License: GPLv3+ and CC-BY and CC-BY-SA and MPLv1.1 and BSD and LGPLv3 and MIT and ISC
