@@ -60,6 +60,7 @@ or your novel.
 %autosetup -n ghostwriter-%{?git:master}%{!?git:%{version}} -p1
 rm -rf 3rdparty/hunspell
 %cmake \
+	-DBUILD_WITH_QT6:BOOL=ON \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
 	-G Ninja \
 	-G Ninja
