@@ -17,12 +17,15 @@ BuildRequires: cmake ninja
 BuildRequires: cmake(ECM)
 BuildRequires: cmake(Qt6Concurrent)
 BuildRequires: cmake(Qt6Core)
+BuildRequires: cmake(Qt6Core5Compat)
 BuildRequires: cmake(Qt6DBus)
 BuildRequires: cmake(Qt6Gui)
 BuildRequires: cmake(Qt6Help)
 BuildRequires: cmake(Qt6LinguistTools)
 BuildRequires: cmake(Qt6Network)
 BuildRequires: cmake(Qt6Svg)
+BuildRequires: cmake(Qt6QmlCore)
+BuildRequires: cmake(Qt6QmlNetwork)
 BuildRequires: cmake(Qt6WebEngineCore)
 BuildRequires: cmake(Qt6WebEngineWidgets)
 BuildRequires: cmake(Qt6Xml)
@@ -34,6 +37,7 @@ BuildRequires: cmake(KF6WidgetsAddons)
 BuildRequires: cmake(KF6DocTools)
 BuildRequires: hunspell-devel
 BuildRequires: pkgconfig(appstream-glib)
+BuildRequires: qt6-qtbase-theme-gtk3
 
 Provides: bundled(cmark-gfm) = 0.29.0
 Provides: bundled(fontawesome-fonts) = 6.10.2
