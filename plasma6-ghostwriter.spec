@@ -2,8 +2,8 @@
 #define git 20230824
 
 Name: plasma6-ghostwriter
-Version: 24.01.90
-Release: %{?git:0.%{git}.}2
+Version: 24.01.95
+Release: %{?git:0.%{git}.}1
 Group: Office
 License: GPLv3+ and CC-BY and CC-BY-SA and MPLv1.1 and BSD and LGPLv3 and MIT and ISC
 Summary: Cross-platform, aesthetic, distraction-free Markdown editor
