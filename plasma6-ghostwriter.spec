@@ -1,15 +1,17 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
-#define git 20230824
+%define git 20240218
+%define gitbranch release/24.02
+%define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 
 Name: plasma6-ghostwriter
-Version: 24.01.95
+Version: 24.01.96
 Release: %{?git:0.%{git}.}1
 Group: Office
 License: GPLv3+ and CC-BY and CC-BY-SA and MPLv1.1 and BSD and LGPLv3 and MIT and ISC
 Summary: Cross-platform, aesthetic, distraction-free Markdown editor
 URL: https://github.com/wereturtle/%{name}
 %if 0%{?git:1}
-Source0: https://github.com/wereturtle/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
+Source0: https://invent.kde.org/office/ghostwriter/-/archive/%{gitbranch}/ghostwriter-%{gitbranchd}.tar.bz2
 %else
 Source0: http://download.kde.org/%{stable}/release-service/%{version}/src/ghostwriter-%{version}.tar.xz
 %endif
@@ -54,19 +56,18 @@ Recommends: multimarkdown%{?_isa}
 %description
 Ghostwriter is a text editor for Markdown, which is a plain text markup
 format created by John Gruber. For more information about Markdown, please
-visit John Gruberâ€™s website at http://www.daringfireball.net.
+visit John Gruber's website at http://www.daringfireball.net.
 
 Ghostwriter provides a relaxing, distraction-free writing environment,
 whether your masterpiece be that next blog post, your school paper,
 or your novel.
 
 %prep
-%autosetup -n ghostwriter-%{?git:master}%{!?git:%{version}} -p1
+%autosetup -n ghostwriter-%{?git:%{gitbranchd}}%{!?git:%{version}} -p1
 rm -rf 3rdparty/hunspell
 %cmake \
 	-DBUILD_WITH_QT6:BOOL=ON \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja \
 	-G Ninja
 
 %build
