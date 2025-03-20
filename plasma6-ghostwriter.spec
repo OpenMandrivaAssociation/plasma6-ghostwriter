@@ -5,7 +5,7 @@
 
 Name: plasma6-ghostwriter
 Version: 24.12.3
-Release: %{?git:0.%{git}.}1
+Release: %{?git:0.%{git}.}2
 Group: Office
 License: GPLv3+ and CC-BY and CC-BY-SA and MPLv1.1 and BSD and LGPLv3 and MIT and ISC
 Summary: Cross-platform, aesthetic, distraction-free Markdown editor
